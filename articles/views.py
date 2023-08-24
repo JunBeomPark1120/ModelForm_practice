@@ -23,7 +23,7 @@ def detail(request, id):
     return render(request, 'detail.html', context)
 
 # Create 함수
-def create(request, id):
+def create(request):
     if request.method == 'POST':
         form =ArticleForm(request.POST)
         if form.is_valid():
@@ -36,4 +36,10 @@ def create(request, id):
     context = {
         'form': form,
     }
-    return render(request, 'create,html', context)
+    return render(request, 'create.html', context)
+
+# Delete 함수
+def delete(request):
+    article = Article.objects.get(id=id)
+    article.delete()
+    return redirect('articles:index')
