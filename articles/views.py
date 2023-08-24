@@ -5,10 +5,10 @@ from .models import Article
 
 # Read 함수
 def index(request):
-    article = Article.objects.all()
+    articles = Article.objects.all()
     
     context = {
-        'article': article
+        'articles': articles
     }
     
     return render(request, 'index.html', context)
